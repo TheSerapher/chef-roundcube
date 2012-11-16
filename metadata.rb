@@ -7,6 +7,7 @@ version          "0.0.1"
 
 depends          "yum"
 depends          "apache2"
+depends          "php"
 depends          "mysql"
 depends          "database"
 depends          "openssl"
