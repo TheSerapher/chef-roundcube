@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+script/bootstrap
+
+: ${COOKBOOK_NAME:="roundcube"}
+: ${COOKBOOKS_ROOT:="/tmp/cookbooks"}
+COOKBOOKS_PATH="$COOKBOOKS_ROOT/$COOKBOOK_NAME"
+
+echo "  + Installing cookbooks to '$COOKBOOKS_PATH'"
+LIBRARIAN_CHEF_PATH="$COOKBOOKS_PATH"
+export LIBRARIAN_CHEF_PATH
+bundle exec librarian-chef install $LIBRARIAN_OPTS
+
+echo "  + Running RSpec tests..."
+exec bundle exec rspec $RSPEC_OPTS "$COOKBOOKS_PATH/$COOKBOOK_NAME"
