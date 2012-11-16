@@ -26,9 +26,9 @@ mysql_database node["roundcube"]["database"]["name"] do
 end
 
 execute "import-sql" do
-  command "mysql -u #{node["roundcube"]["database"]["user"]} \
-           -p#{node["roundcube"]["database"]["password"]} #{node["roundcube"]["database"]["name"]} < \
-          #{node["roundcube"]["destination"]}/SQL/mysql.initial.sql"
+  command "mysql -u #{node["roundcube"]["database"]["user"]}" +
+          " -p#{node["roundcube"]["database"]["password"]} #{node["roundcube"]["database"]["name"]} <" +
+          " #{node["roundcube"]["destination"]}/SQL/mysql.initial.sql"
   action :nothing
 end
 
@@ -66,35 +66,22 @@ remote_file "#{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]
 end
 
 execute "unpack-roundcube" do
-  command "tar -xzf #{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]["version"]}.tar.gz -C #{node["roundcube"]["destination"]}"
+  command "tar --strip-components=1 -xzf #{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]["version"]}.tar.gz -C #{node["roundcube"]["destination"]}"
   notifies :run, "execute[owner-roundcube]", :immediately
   action :nothing
 end
 
 execute "owner-roundcube" do
   command "chown #{node["apache"]["user"]}.#{node["apache"]["group"]} #{node["roundcube"]["destination"]}"
-  notifies :run, "execute[cleanup-roundcube]", :immediately
   action :nothing
 end
 
-execute "cleanup-roundcube" do
-  command "cp -R #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}/* #{node["roundcube"]["destination"]}; \
-           cp #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}/.htaccess #{node["roundcube"]["destination"]}; \
-           rm -fR #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}"
-  action :nothing
-end
-
-template "#{node["roundcube"]["destination"]}/config/db.inc.php" do
-  source "roundcube/db.inc.php.erb"
-  mode "644"
-end
-
-template "#{node["roundcube"]["destination"]}/config/main.inc.php" do
-  source "roundcube/main.inc.php.erb"
-  mode "644"
-end
-
-template "#{node["roundcube"]["destination"]}/.htaccess" do
-  source "roundcube/htaccess.erb"
-  mode "644"
+{ "#{node["roundcube"]["destination"]}/config/db.inc.php" => "roundcube/db.inc.php.erb",
+  "#{node["roundcube"]["destination"]}/config/main.inc.php" => "roundcube/main.inc.php.erb",
+  "#{node["roundcube"]["destination"]}/.htaccess" => "roundcube/htaccess.erb"
+}.each do |file, tpl|
+  template file do
+    source tpl
+    mode "644"
+  end
 end
