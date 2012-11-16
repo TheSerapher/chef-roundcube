@@ -1,5 +1,4 @@
-Description [![Build
-Status](https://travis-ci.org/TheSerapher/chef-roundcube.png)](https://travis-ci.org/TheSerapher/chef-roundcube)
+Description [![Build Status](https://travis-ci.org/TheSerapher/chef-roundcube.png)](https://travis-ci.org/TheSerapher/chef-roundcube)
 ===========
 
 Installs/Configures roundcube webmail, a PHP Mail application
