@@ -4,7 +4,7 @@ set -e
 
 script/bootstrap
 
-: ${COOKBOOK_NAME:="qmailtoaster"}
+: ${COOKBOOK_NAME:="roundcube"}
 : ${COOKBOOKS_ROOT:="/tmp/cookbooks"}
 COOKBOOKS_PATH="$COOKBOOKS_ROOT/$COOKBOOK_NAME"
 
