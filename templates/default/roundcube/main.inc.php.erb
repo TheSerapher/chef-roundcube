@@ -66,18 +66,18 @@ $rcmail_config['smtp_debug'] = false;
 // %n - http hostname ($_SERVER['SERVER_NAME'])
 // %d - domain (http hostname without the first part)
 // For example %n = mail.domain.tld, %d = domain.tld
-$rcmail_config['default_host'] = 'ssl://localhost:993';
+$rcmail_config['default_host'] = '<%= node["roundcube"]["config"]["default_host"] %>';
 
 // TCP port used for IMAP connections
-$rcmail_config['default_port'] = 143;
+$rcmail_config['default_port'] = <%= node["roundcube"]["config"]["default_port"] %>;
 
 // IMAP AUTH type (DIGEST-MD5, CRAM-MD5, LOGIN, PLAIN or empty to use
 // best server supported one)
-$rcmail_config['imap_auth_type'] = NULL;
+$rcmail_config['imap_auth_type'] = <%= node["roundcube"]["config"]["imap_auth_type"] %>;
 
 // If you know your imap's folder delimiter, you can specify it here.
 // Otherwise it will be determined automatically
-$rcmail_config['imap_delimiter'] = NULL;
+$rcmail_config['imap_delimiter'] = <%= node["roundcube"]["config"]["imap_delimiter"] %>;
 
 // If IMAP server doesn't support NAMESPACE extension, but you're
 // using shared folders or personal root folder is non-empty, you'll need to
@@ -85,9 +85,9 @@ $rcmail_config['imap_delimiter'] = NULL;
 // Folders need to be ended with directory separator, e.g. "INBOX."
 // (special directory "~" is an exception to this rule)
 // These can be used also to overwrite server's namespaces
-$rcmail_config['imap_ns_personal'] = '';
-$rcmail_config['imap_ns_other'] = NULL;
-$rcmail_config['imap_ns_shared'] = NULL;
+$rcmail_config['imap_ns_personal'] = '<%= node["roundcube"]["config"]["imap_ns_personal"] %>';
+$rcmail_config['imap_ns_other'] = <%= node["roundcube"]["config"]["imap_ns_other"] %>;
+$rcmail_config['imap_ns_shared'] = <%= node["roundcube"]["config"]["imap_ns_shared"] %>;
 
 // By default IMAP capabilities are readed after connection to IMAP server
 // In some cases, e.g. when using IMAP proxy, there's a need to refresh the list
@@ -122,18 +122,18 @@ $rcmail_config['imap_auth_pw'] = NULL;
 // %d - domain (http hostname without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
 // For example %n = mail.domain.tld, %d = domain.tld
-$rcmail_config['smtp_server'] = 'localhost';
+$rcmail_config['smtp_server'] = '<%= node["roundcube"]["config"]["smtp_server"] %>';
 
 // SMTP port (default is 25; 465 for SSL)
-$rcmail_config['smtp_port'] = 25;
+$rcmail_config['smtp_port'] = <%= node["roundcube"]["config"]["smtp_port"] %>;
 
 // SMTP username (if required) if you use %u as the username Roundcube
 // will use the current username for login
-$rcmail_config['smtp_user'] = '%u';
+$rcmail_config['smtp_user'] = '<%= node["roundcube"]["config"]["smtp_user"] %>';
 
 // SMTP password (if required) if you use %p as the password Roundcube
 // will use the current user's password for login
-$rcmail_config['smtp_pass'] = '%p';
+$rcmail_config['smtp_pass'] = '<%= node["roundcube"]["config"]["smtp_pass"] %>';
 
 // SMTP AUTH type (DIGEST-MD5, CRAM-MD5, LOGIN, PLAIN or empty to use
 // best server supported one)
