@@ -39,6 +39,11 @@ attribute "roundcube/destination",
   :description => "Destination directory to extract Roundcube source to",
   :default => "/var/www/roundcube"
 
+attribute "roundcube/config",
+  :display_name => "Roundcube configuration",
+  :description => "Adjust some basic configuration variables. See attributes file default.rb.",
+  :default => ""
+
 depends          "yum"
 depends          "apache2"
 depends          "php"
