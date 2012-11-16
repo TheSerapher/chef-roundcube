@@ -1,5 +1,4 @@
-Description [![Build
-Status](https://travis-ci.org/TheSerapher/chef-roundcube.png)](https://travis-ci.org/TheSerapher/chef-roundcube)
+Description [![Build Status](https://travis-ci.org/TheSerapher/chef-roundcube.png)](https://travis-ci.org/TheSerapher/chef-roundcube)
 ===========
 
 Installs/Configures roundcube webmail, a PHP Mail application
@@ -29,6 +28,7 @@ Attributes
 * `node['roundcube']['source']['url']` - URL to fetch the tar.gz source from.
 * `node['roundcube']['version']` - Roundcube Version string to install from source.
 * `node['roundcube']['destination']` - Destination directory to extract Roundcube source to
+* `node['roundcube']['config']` - Adjust some basic configuration variables. See attributes file default.rb.
 
 Recipes
 =======
