@@ -66,21 +66,13 @@ remote_file "#{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]
 end
 
 execute "unpack-roundcube" do
-  command "tar -xzf #{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]["version"]}.tar.gz -C #{node["roundcube"]["destination"]}"
+  command "tar --strip-components=1 -xzf #{Chef::Config[:file_cache_path]}/roundcubemail-#{node["roundcube"]["version"]}.tar.gz -C #{node["roundcube"]["destination"]}"
   notifies :run, "execute[owner-roundcube]", :immediately
   action :nothing
 end
 
 execute "owner-roundcube" do
   command "chown #{node["apache"]["user"]}.#{node["apache"]["group"]} #{node["roundcube"]["destination"]}"
-  notifies :run, "execute[cleanup-roundcube]", :immediately
-  action :nothing
-end
-
-execute "cleanup-roundcube" do
-  command "cp -R #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}/* #{node["roundcube"]["destination"]};" +
-          "cp #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}/.htaccess #{node["roundcube"]["destination"]};" +
-          "rm -fR #{node["roundcube"]["destination"]}/roundcubemail-#{node["roundcube"]["version"]}"
   action :nothing
 end
 
