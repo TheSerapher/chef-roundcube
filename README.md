@@ -8,7 +8,7 @@ Requirements
 
 ## Platform:
 
-*No platforms defined*
+* centos
 
 ## Cookbooks:
 
@@ -22,12 +22,20 @@ Requirements
 Attributes
 ==========
 
-*No attributes defined*
+* `node['roundcube']['database']['user']` - Username to grant access privileges for database.
+* `node['roundcube']['database']['name']` - Name of the roundcube database.
+* `node['roundcube']['database']['password']` - Random generated string via secure_password or manually set.
+* `node['roundcube']['source']['url']` - URL to fetch the tar.gz source from.
+* `node['roundcube']['version']` - Roundcube Version string to install from source.
+* `node['roundcube']['destination']` - Destination directory to extract Roundcube source to
 
 Recipes
 =======
 
-*No recipes defined*
+## roundcube
+
+Install and configurea a basic roundcube Webmail service.
+
 
 License and Author
 ==================
