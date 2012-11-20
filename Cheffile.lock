@@ -21,7 +21,7 @@ SITE
       openssl (>= 0.0.0)
     xfs (1.0.0)
     xml (1.0.4)
-    yum (1.0.0)
+    yum (2.0.0)
 
 PATH
   remote: .
