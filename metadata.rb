@@ -1,3 +1,4 @@
+name             "roundcube"
 maintainer       "Sebastian Grewe"
 maintainer_email "sebastian@grewe.ca"
 license          "All rights reserved"
