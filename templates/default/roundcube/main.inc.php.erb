@@ -325,7 +325,11 @@ $rcmail_config['email_dns_check'] = false;
 // ----------------------------------
 
 // List of active plugins (in plugins/ directory)
-$rcmail_config['plugins'] = array('sauserprefs','contextmenu');
+$rcmail_config['plugins'] = array(
+  <% node['roundcube']['plugins'].each do |name,data| %>
+  '<%= name %>',
+  <% end %>
+);
 
 // ----------------------------------
 // USER INTERFACE
