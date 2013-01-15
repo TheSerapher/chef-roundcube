@@ -5,7 +5,6 @@ default["roundcube"]["destination"] = "/var/www/roundcube"
 default["roundcube"]["database"]["name"] = "roundcube"
 default["roundcube"]["database"]["user"] = "roundcube"
 
-
 # Configuration variables for main.inc.php
 default["roundcube"]["config"]["default_host"] = "ssl://localhost:993"
 default["roundcube"]["config"]["default_port"] = 143
@@ -18,3 +17,22 @@ default["roundcube"]["config"]["smtp_server"] = "localhost"
 default["roundcube"]["config"]["smtp_port"] = 25
 default["roundcube"]["config"]["smtp_user"] = "%u"
 default["roundcube"]["config"]["smtp_pass"] = "%p"
+
+# Plugin configuration
+default['roundcube']['plugins'] = {
+  'contextmenu' => {
+    'url' => 'http://www.tehinterweb.co.uk/roundcube/plugins/contextmenu.tar.gz'
+  },
+  'password' => {
+    'config' => {
+      'password_driver' => 'vpopmaild',
+      'password_confirm_current' => 'true',
+      'password_minimum_length' => 0,
+      'password_require_nonalpha' => false,
+      'password_log' => false,
+      'password_login_exceptions' => 'null',
+      'password_vpopmaild_host' => 'localhost',
+      'password_vpopmaild_port' => 89
+    }
+  }
+}
