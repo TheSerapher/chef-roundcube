@@ -28,6 +28,7 @@ Attributes
 * `node['roundcube']['source']['url']` - URL to fetch the tar.gz source from.
 * `node['roundcube']['version']` - Roundcube Version string to install from source.
 * `node['roundcube']['destination']` - Destination directory to extract Roundcube source to
+* `node['roundcube']['config']` - Adjust some basic configuration variables. See attributes file default.rb.
 
 Recipes
 =======
