@@ -4,9 +4,9 @@ rvm:
   - 1.9.3
   - 1.8.7
 
-install: script/bootstrap
+install: bundle install
 
-script: script/ci
+script: bundle exec rake test
 
 branches:
   only:
