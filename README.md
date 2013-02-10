@@ -1,4 +1,4 @@
-Description [![Build Status](https://travis-ci.org/TheSerapher/chef-roundcube.png?branch=master)](https://travis-ci.org/TheSerapher/chef-roundcube)
+Description [ ![Codeship Status for TheSerapher/chef-roundcube](https://www.codeship.io/projects/8a8c2730-55e6-0130-b5a3-1231381d5121/status?branch=master)](https://www.codeship.io/projects/1455) [![Build Status](https://travis-ci.org/TheSerapher/chef-roundcube.png?branch=master)](https://travis-ci.org/TheSerapher/chef-roundcube)
 ===========
 
 Installs/Configures roundcube webmail, a PHP Mail application
