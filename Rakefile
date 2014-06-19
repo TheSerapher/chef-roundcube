@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'chef/cookbook/metadata'
 
 def cookbook_metadata
@@ -15,38 +17,43 @@ def cookbook_name
   end
 end
 
+VAGRANT = ENV['VAGRANT'] || false
 COOKBOOK_NAME = ENV['COOKBOOK_NAME'] || cookbook_name
 COOKBOOKS_PATH = ENV['COOKBOOKS_PATH'] || 'cookbooks'
 
-
-task :setup_cookbooks do
+desc 'Install cookbooks from Berksfile'
+task 'setup_cookbooks' do
   rm_rf COOKBOOKS_PATH
-  sh 'berks', 'install', '--path', COOKBOOKS_PATH
+  sh 'berks', 'vendor', COOKBOOKS_PATH
 end
 
 desc 'Run knife cookbook test'
-task :knife => :setup_cookbooks do
+task 'knife' => 'setup_cookbooks' do
   sh 'knife', 'cookbook', 'test', COOKBOOK_NAME, '--config', '.knife.rb',
-    '--cookbook-path', COOKBOOKS_PATH
+     '--cookbook-path', COOKBOOKS_PATH
 end
 
 desc 'Run Foodcritic lint checks'
-task :foodcritic => :setup_cookbooks do
+task 'foodcritic' do
   sh 'foodcritic', '--epic-fail', 'any',
-    File.join(COOKBOOKS_PATH, COOKBOOK_NAME)
+     '-X', 'cookbooks', '.'
 end
 
 desc 'Run ChefSpec examples'
-task :chefspec => :setup_cookbooks do
-  sh 'rspec', '--color', '--format', 'documentation',
-    File.join(COOKBOOKS_PATH, COOKBOOK_NAME, 'spec')
+task 'chefspec' => 'setup_cookbooks' do
+  sh 'rspec', '--color', '--format', 'documentation', File.join(COOKBOOKS_PATH, COOKBOOK_NAME)
+end
+
+desc 'Run Rubocop'
+task 'rubocop' do
+  sh 'rubocop', '-fs'
 end
 
 desc 'Run all tests'
-task :test => [:knife, :foodcritic, :chefspec]
+task 'test' => %w( knife foodcritic chefspec rubocop )
 
-task :default => :test
+# Default, test everything
+task 'default' => 'test'
 
-# aliases
-task :lint => :foodcritic
-task :spec => :chefspec
+# Cleanup testing cookbooks
+at_exit { rm_rf COOKBOOKS_PATH }
