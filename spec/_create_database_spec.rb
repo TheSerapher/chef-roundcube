@@ -5,6 +5,7 @@ require 'spec_helper'
 describe 'roundcube::_create_database' do
   before(:all) do
     @chef_run = ChefSpec::Runner.new(platform: 'redhat', version: '6.5')
+    stub_command('/usr/sbin/httpd -t').and_return(true)
     @chef_run.converge(described_recipe)
   end
   it 'should create roundcube database' do

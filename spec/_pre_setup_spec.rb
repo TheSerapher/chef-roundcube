@@ -8,6 +8,7 @@ describe 'roundcube::_pre_setup' do
     @chef_run.node.set['roundcube'] = { 'database' => { 'user' => 'roundcube',
                                                         'database' => 'roundcube',
                                                         'password' => 'test' } }
+    stub_command('/usr/sbin/httpd -t').and_return(true)
     @chef_run.converge(described_recipe)
   end
   it 'should create directory /var/www' do

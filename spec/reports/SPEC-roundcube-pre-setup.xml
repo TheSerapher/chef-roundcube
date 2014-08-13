@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="roundcube::_pre_setup" tests="1" time="0.270122" failures="0" errors="0" skipped="0" timestamp="2014-08-13T09:45:17+02:00">
-  <testcase name="roundcube::_pre_setup should create directory /var/www" time="0.000182">
-  </testcase>
-</testsuite>
