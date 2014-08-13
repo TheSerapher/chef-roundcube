@@ -6,6 +6,7 @@ describe 'roundcube::default' do
   before(:all) do
     stub_command('which php').and_return('/usr/bin/php')
     @chef_run = ChefSpec::Runner.new(platform: 'redhat', version: '6.5')
+    stub_command('/usr/sbin/httpd -t').and_return(true)
     @chef_run.converge(described_recipe)
   end
   %w( roundcube::_install_dependencies
