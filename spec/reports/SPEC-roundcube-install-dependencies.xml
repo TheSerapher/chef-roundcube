@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="roundcube::_install_dependencies" tests="10" time="0.467793" failures="0" errors="0" skipped="0" timestamp="2014-08-13T09:45:16+02:00">
+  <testcase name="roundcube::_install_dependencies should include recipe yum-epel" time="0.000194">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should include recipe apache2" time="9.4e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should include recipe apache2::mod_php5" time="9.2e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should include recipe php::module_mysql" time="8.3e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should include recipe mysql-chef_gem" time="8.1e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should include recipe mysql::server" time="8.0e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should install package php-xml" time="9.2e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should install package php-mcrypt" time="7.6e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should install package php-mbstring" time="7.4e-05">
+  </testcase>
+  <testcase name="roundcube::_install_dependencies should install package php-intl" time="7.4e-05">
+  </testcase>
+</testsuite>

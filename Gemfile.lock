@@ -28,6 +28,7 @@ GEM
     buff-ruby_engine (0.1.0)
     buff-shell_out (0.1.1)
       buff-ruby_engine (~> 0.1.0)
+    builder (3.2.2)
     celluloid (0.16.0.pre)
       timers (~> 2.0.0)
     celluloid-io (0.16.0.pre)
@@ -60,6 +61,11 @@ GEM
       chef (~> 11.12)
       fauxhai (~> 2.0)
       rspec (~> 3.0)
+    ci_reporter (2.0.0)
+      builder (>= 2.1.2)
+    ci_reporter_rspec (1.0.0)
+      ci_reporter (~> 2.0)
+      rspec (>= 2.14, < 4)
     coderay (1.1.0)
     dep-selector-libgecode (1.0.1)
     dep_selector (1.0.3)
@@ -207,9 +213,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf (~> 3.1.0)
+  berkshelf
   chefspec
+  ci_reporter_rspec
   foodcritic
   kitchen-vagrant
   rubocop
-  test-kitchen (~> 1.2.0)
+  test-kitchen

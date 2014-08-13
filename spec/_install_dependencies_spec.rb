@@ -6,7 +6,7 @@ describe 'roundcube::_install_dependencies' do
   before(:all) do
     stub_command('which php').and_return('/usr/bin/php')
     @chef_run = ChefSpec::Runner.new(platform: 'centos', version: '6.5')
-    @chef_run.converge 'roundcube::_install_dependencies'
+    @chef_run.converge(described_recipe)
   end
   %w( yum-epel apache2 apache2::mod_php5
       php::module_mysql mysql-chef_gem mysql::server ).each do |recipe|

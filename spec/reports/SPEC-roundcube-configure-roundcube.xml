@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="roundcube::_configure_roundcube" tests="3" time="0.461374" failures="0" errors="0" skipped="0" timestamp="2014-08-13T09:45:15+02:00">
+  <testcase name="roundcube::_configure_roundcube should create file /var/www/roundcube/config/db.inc.php" time="0.000779">
+  </testcase>
+  <testcase name="roundcube::_configure_roundcube should create file /var/www/roundcube/config/main.inc.php" time="0.000611">
+  </testcase>
+  <testcase name="roundcube::_configure_roundcube should create file /var/www/roundcube/.htaccess" time="0.000572">
+  </testcase>
+</testsuite>

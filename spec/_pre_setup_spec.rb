@@ -10,7 +10,7 @@ describe 'roundcube::_pre_setup' do
                                                         'password' => 'test' } }
     @chef_run.converge(described_recipe)
   end
-  it 'should create directory /var/www/roundcube' do
-    expect(@chef_run).to create_directory '/var/www/roundcube'
+  it 'should create directory /var/www' do
+    expect(@chef_run).to create_directory '/var/www'
   end
 end

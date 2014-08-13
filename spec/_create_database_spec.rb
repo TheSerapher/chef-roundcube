@@ -16,4 +16,7 @@ describe 'roundcube::_create_database' do
   it 'should execute mysql_database flush the privileges' do
     expect(@chef_run).to query_mysql_database 'flush the privileges'
   end
+  it 'should not import the database without trigger' do
+    expect(@chef_run).not_to run_execute('import-sql')
+  end
 end
